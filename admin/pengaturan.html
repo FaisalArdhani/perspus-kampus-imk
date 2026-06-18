@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan - Admin</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-page">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-icon">
+            <img
+              src="../asset/images/logo-unpam.png"
+              alt="PerpusKampus UNPAM"
+            />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PerpusKampus</span>
+            <span class="brand-role">Admin</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-home-48.png"
+              alt="Dashboard"
+            />
+            <span>Dashboard</span>
+          </a>
+          <a href="kelolabuku.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-book-48.png"
+              alt="Kelola Buku"
+            />
+            <span>Kelola Buku</span>
+          </a>
+          <a href="peminjaman.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-pay-date-48.png"
+              alt="Peminjaman"
+            />
+            <span>Peminjaman</span>
+          </a>
+          <a href="denda.html" class="nav-item">
+            <img src="../asset/images/icon/icons8-bank-48.png" alt="Denda" />
+            <span>Denda</span>
+          </a>
+          <a href="pengguna.html" class="nav-item active">
+            <img
+              src="../asset/images/icon/icons8-users-48.png"
+              alt="Pengguna"
+            />
+            <span>Pengguna</span>
+          </a>
+          <a href="laporan.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-document-48.png"
+              alt="Laporan"
+            />
+            <span>Laporan</span>
+          </a>
+          <a href="notifikasiAdmin.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-notification-48.png"
+              alt="Notifikasi"
+            />
+            <span>Notifikasi</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item logout">
+            <img
+              src="../asset/images/icon/icons8-gear-48.png"
+              alt="Pengaturan"
+            />
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Pengaturan</h1>
+            <p>Kelola akun dan sistem perpustakaan</p>
+          </div>
+        </header>
+
+        <section class="settings-grid">
+          <!-- Pengaturan Akun -->
+          <div class="card settings-card">
+            <div class="card-header">
+              <h2>Pengaturan Akun</h2>
+            </div>
+
+            <form id="accountForm" class="settings-form">
+              <div class="input-group">
+                <label>Nama Admin</label>
+                <input type="text" id="adminNama" />
+              </div>
+
+              <div class="input-group">
+                <label>Email</label>
+                <input type="email" id="adminEmail" />
+              </div>
+
+              <div class="input-group">
+                <label>No Telepon</label>
+                <input type="text" id="adminPhone" />
+              </div>
+
+              <div class="input-group">
+                <label>Password Lama</label>
+                <input type="password" id="oldPassword" />
+              </div>
+
+              <div class="input-group">
+                <label>Password Baru</label>
+                <input type="password" id="newPassword" />
+              </div>
+
+              <button type="submit" class="btn-submit">Simpan Akun</button>
+            </form>
+          </div>
+
+          <!-- Pengaturan Sistem -->
+          <div class="card settings-card">
+            <div class="card-header">
+              <h2>Pengaturan Sistem</h2>
+            </div>
+
+            <form id="systemForm" class="settings-form">
+              <div class="input-group">
+                <label>Lama Peminjaman (Hari)</label>
+                <input type="number" id="lamaPinjam" />
+              </div>
+
+              <div class="input-group">
+                <label>Denda Per Hari</label>
+                <input type="number" id="dendaHarian" />
+              </div>
+
+              <div class="input-group">
+                <label>Status Notifikasi Email</label>
+
+                <select id="emailNotif">
+                  <option value="aktif">Aktif</option>
+                  <option value="nonaktif">Nonaktif</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                Simpan Pengaturan
+              </button>
+            </form>
+          </div>
+        </section>
+        <!-- Backup Data -->
+        <section class="card backup-card">
+          <div class="card-header">
+            <h2>Backup Data</h2>
+            <p>Unduh seluruh data perpustakaan</p>
+          </div>
+
+          <button id="backupBtn" class="btn-outline">Backup Data</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/pengaturan.js"></script>
+  </body>
+</html>

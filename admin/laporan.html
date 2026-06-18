@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Admin</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-page">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-icon">
+            <img
+              src="../asset/images/logo-unpam.png"
+              alt="PerpusKampus UNPAM"
+            />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PerpusKampus</span>
+            <span class="brand-role">Admin</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-home-48.png"
+              alt="Dashboard"
+            />
+            <span>Dashboard</span>
+          </a>
+          <a href="kelolabuku.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-book-48.png"
+              alt="Kelola Buku"
+            />
+            <span>Kelola Buku</span>
+          </a>
+          <a href="peminjaman.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-pay-date-48.png"
+              alt="Peminjaman"
+            />
+            <span>Peminjaman</span>
+          </a>
+          <a href="denda.html" class="nav-item">
+            <img src="../asset/images/icon/icons8-bank-48.png" alt="Denda" />
+            <span>Denda</span>
+          </a>
+          <a href="pengguna.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-users-48.png"
+              alt="Pengguna"
+            />
+            <span>Pengguna</span>
+          </a>
+          <a href="laporan.html" class="nav-item active">
+            <img
+              src="../asset/images/icon/icons8-document-48.png"
+              alt="Laporan"
+            />
+            <span>Laporan</span>
+          </a>
+          <a href="notifikasiAdmin.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-notification-48.png"
+              alt="Notifikasi"
+            />
+            <span>Notifikasi</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item logout">
+            <img
+              src="../asset/images/icon/icons8-gear-48.png"
+              alt="Pengaturan"
+            />
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Laporan</h1>
+            <p>Ringkasan aktivitas peminjaman perpustakaan</p>
+          </div>
+          <div class="topbar-user">
+            <div class="greeting">
+              <span>Selamat datang,</span>
+              <strong id="welcome">Petugas perpustakaan</strong>
+            </div>
+            <div class="avatar">
+              <img
+                src="../asset/images/icon/icons8-user-96.png"
+                alt="User avatar"
+              />
+            </div>
+          </div>
+        </header>
+
+        <div class="report-filter">
+          <span class="report-filter-label">Periode</span>
+          <select id="filterBulan" class="filter-select"></select>
+          <select id="filterTahun" class="filter-select"></select>
+        </div>
+
+        <section class="stats-grid">
+          <div class="stat-card stat-blue">
+            <span class="stat-label">Total Peminjam</span>
+            <strong id="statTotalPinjam" class="stat-value">0</strong>
+            <span id="statTotalPinjamMeta" class="stat-meta"></span>
+          </div>
+
+          <div class="stat-card stat-green">
+            <span class="stat-label">Total Dikembalikan</span>
+            <strong id="statTotalKembali" class="stat-value">0</strong>
+            <span id="statTotalKembaliMeta" class="stat-meta"></span>
+          </div>
+
+          <div class="stat-card stat-yellow">
+            <span class="stat-label">Total Terlambat</span>
+            <strong id="statTotalTelat" class="stat-value">0</strong>
+            <span id="statTotalTelatMeta" class="stat-meta"></span>
+          </div>
+
+          <div class="stat-card stat-red">
+            <span class="stat-label">Total Denda</span>
+            <strong id="statTotalDenda" class="stat-value">Rp. 0</strong>
+            <span id="statTotalDendaMeta" class="stat-meta"></span>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="card">
+            <div class="card-header">
+              <h2>Grafik Peminjaman</h2>
+              <p>Aktivitas peminjaman 7 hari terakhir pada periode ini</p>
+            </div>
+            <div class="chart-area">
+              <div id="chartAxis" class="chart-axis"></div>
+              <div id="chartFooter" class="chart-footer"></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2>Top 5 Buku Terpopuler</h2>
+              <p>Berdasarkan jumlah peminjaman pada periode ini</p>
+            </div>
+            <ol id="topBukuList" class="latest-list top-buku-list"></ol>
+            <div
+              id="emptyTopBuku"
+              style="
+                display: none;
+                padding: 20px;
+                text-align: center;
+                color: #667085;
+              "
+            >
+              Belum ada data peminjaman pada periode ini.
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/laporan.js"></script>
+  </body>
+</html>

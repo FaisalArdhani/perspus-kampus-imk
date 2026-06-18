@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelola Buku - Admin</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-page">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-icon">
+            <img
+              src="../asset/images/logo-unpam.png"
+              alt="PerpusKampus UNPAM"
+            />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PerpusKampus</span>
+            <span class="brand-role">Admin</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-home-48.png"
+              alt="Dashboard"
+            />
+            <span>Dashboard</span>
+          </a>
+          <a href="kelolabuku.html" class="nav-item active">
+            <img
+              src="../asset/images/icon/icons8-book-48.png"
+              alt="Kelola Buku"
+            />
+            <span>Kelola Buku</span>
+          </a>
+          <a href="peminjaman.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-pay-date-48.png"
+              alt="Peminjaman"
+            />
+            <span>Peminjaman</span>
+          </a>
+          <a href="denda.html" class="nav-item">
+            <img src="../asset/images/icon/icons8-bank-48.png" alt="Denda" />
+            <span>Denda</span>
+          </a>
+          <a href="pengguna.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-users-48.png"
+              alt="Pengguna"
+            />
+            <span>Pengguna</span>
+          </a>
+          <a href="laporan.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-document-48.png"
+              alt="Laporan"
+            />
+            <span>Laporan</span>
+          </a>
+          <a href="notifikasiAdmin.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-notification-48.png"
+              alt="Notifikasi"
+            />
+            <span>Notifikasi</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item logout">
+            <img
+              src="../asset/images/icon/icons8-gear-48.png"
+              alt="Pengaturan"
+            />
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Kelola Buku</h1>
+            <p>Tambah, edit, dan hapus data buku</p>
+          </div>
+          <div class="topbar-user">
+            <div class="greeting">
+              <span>Selamat datang,</span>
+              <strong id="welcome">Admin</strong>
+            </div>
+            <div class="avatar">
+              <img
+                src="../asset/images/icon/icons8-user-96.png"
+                alt="User avatar"
+              />
+            </div>
+          </div>
+        </header>
+
+        <section class="card book-management-card">
+          <div class="card-header">
+            <h2>Daftar Buku</h2>
+          </div>
+
+          <div id="bookGrid" class="book-grid"></div>
+        </section>
+
+        <!-- Floating Button -->
+        <button id="addBookBtn" class="fab-add">+</button>
+
+        <!-- Modal -->
+        <div id="bookModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 id="modalTitle">Tambah Buku</h2>
+            </div>
+
+            <input type="hidden" id="bookId" />
+
+            <div class="input-group">
+              <label for="judul">Judul Buku</label>
+              <input type="text" id="judul" />
+            </div>
+
+            <div class="input-group">
+              <label for="penulis">Penulis</label>
+              <input type="text" id="penulis" />
+            </div>
+
+            <div class="input-group">
+              <label for="kategori">Kategori</label>
+              <input type="text" id="kategori" />
+            </div>
+
+            <div class="input-group">
+              <label for="stok">Stok</label>
+              <input type="number" id="stok" min="1" value="1" />
+            </div>
+
+            <div class="input-group">
+              <label for="coverFile">Upload Cover (file)</label>
+              <input type="file" id="coverFile" accept="image/*" />
+            </div>
+
+            <div class="input-group">
+              <label for="cover">Cover (URL atau DataURL)</label>
+              <input type="text" id="cover" />
+            </div>
+
+            <div class="input-group full-width">
+              <label for="deskripsi">Deskripsi</label>
+              <textarea id="deskripsi" rows="4"></textarea>
+            </div>
+
+            <div class="modal-actions">
+              <button id="cancelBtn" class="btn-cancel">Batal</button>
+              <button id="saveBtn" class="btn-submit">Simpan</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/kelolabuku.js"></script>
+    <script>
+      // tampilkan nama pengguna dari localStorage jika ada
+      (function () {
+        try {
+          const sessionUser = sessionStorage.getItem("currentUser");
+          const localUser = localStorage.getItem("currentUser");
+          const currentUser = sessionUser
+            ? JSON.parse(sessionUser)
+            : localUser
+              ? JSON.parse(localUser)
+              : {};
+          const welcomeEl = document.getElementById("welcome");
+          if (welcomeEl) welcomeEl.textContent = currentUser.nama || "Admin";
+        } catch (e) {
+          console.warn("Gagal mengambil currentUser", e);
+        }
+      })();
+    </script>
+  </body>
+</html>

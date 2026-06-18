@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - PerpusKampus</title>
+
+    <link rel="stylesheet" href="css/global.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="logo">
+        <img src="asset/images/logo-unpam.png" alt="Logo" />
+      </div>
+
+      <h1>PerpusKampus</h1>
+      <p class="subtitle">Sistem Peminjaman Buku Perpustakaan</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username/NIM/NIDN</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Masukkan Username/NIM/NIDN"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Masukan Password"
+            required
+          />
+        </div>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <!-- <p class="register-text">
+        Belum daftar?
+        <a href="#">Register</a>
+      </p> -->
+    </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <h3 id="popup-title"></h3>
+        <p id="popup-message"></p>
+
+        <button onclick="closePopup()">Tutup</button>
+      </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

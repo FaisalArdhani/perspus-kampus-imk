@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Denda - Admin</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-page">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-icon">
+            <img
+              src="../asset/images/logo-unpam.png"
+              alt="PerpusKampus UNPAM"
+            />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">PerpusKampus</span>
+            <span class="brand-role">Admin</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-home-48.png"
+              alt="Dashboard"
+            />
+            <span>Dashboard</span>
+          </a>
+          <a href="kelolabuku.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-book-48.png"
+              alt="Kelola Buku"
+            />
+            <span>Kelola Buku</span>
+          </a>
+          <a href="peminjaman.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-pay-date-48.png"
+              alt="Peminjaman"
+            />
+            <span>Peminjaman</span>
+          </a>
+          <a href="denda.html" class="nav-item active">
+            <img src="../asset/images/icon/icons8-bank-48.png" alt="Denda" />
+            <span>Denda</span>
+          </a>
+          <a href="pengguna.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-users-48.png"
+              alt="Pengguna"
+            />
+            <span>Pengguna</span>
+          </a>
+          <a href="laporan.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-document-48.png"
+              alt="Laporan"
+            />
+            <span>Laporan</span>
+          </a>
+          <a href="notifikasiAdmin.html" class="nav-item">
+            <img
+              src="../asset/images/icon/icons8-notification-48.png"
+              alt="Notifikasi"
+            />
+            <span>Notifikasi</span>
+          </a>
+          <a href="pengaturan.html" class="nav-item logout">
+            <img
+              src="../asset/images/icon/icons8-gear-48.png"
+              alt="Pengaturan"
+            />
+            <span>Pengaturan</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="page-title">
+            <h1>Denda</h1>
+            <p>Kelola pengajuan denda & pembayaran</p>
+          </div>
+          <div class="topbar-user">
+            <div class="greeting">
+              <span>Selamat datang,</span>
+              <strong id="welcome">Admin</strong>
+            </div>
+            <div class="avatar">
+              <img
+                src="../asset/images/icon/icons8-user-96.png"
+                alt="User avatar"
+              />
+            </div>
+          </div>
+        </header>
+
+        <section class="card" style="padding: 20px 24px">
+          <div class="card-header" style="margin-bottom: 16px">
+            <h2>Daftar Denda</h2>
+            <p style="margin: 0; color: #667085; font-size: 13px">
+              Data hanya menampilkan transaksi yang memiliki denda (status
+              Telat/Terlambat dengan field denda).
+            </p>
+          </div>
+
+          <div class="denda-table-wrap">
+            <table class="denda-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px">No</th>
+                  <th>Nama</th>
+                  <th style="width: 150px">Jenis Pengguna</th>
+                  <th style="width: 240px">Tanggal Pinjam - Kembali</th>
+                  <th style="width: 170px">Status Buku</th>
+                  <th style="width: 260px">Tindakan</th>
+                </tr>
+              </thead>
+              <tbody id="dendaTableBody">
+                <!-- injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/denda.js"></script>
+    <script>
+      // tampilkan nama pengguna dari localStorage jika ada
+      (function () {
+        try {
+          const sessionUser = sessionStorage.getItem("currentUser");
+          const localUser = localStorage.getItem("currentUser");
+          const currentUser = sessionUser
+            ? JSON.parse(sessionUser)
+            : localUser
+              ? JSON.parse(localUser)
+              : {};
+          const welcomeEl = document.getElementById("welcome");
+          if (welcomeEl) welcomeEl.textContent = currentUser.nama || "Admin";
+        } catch (e) {
+          console.warn("Gagal mengambil currentUser", e);
+        }
+      })();
+    </script>
+  </body>
+</html>
